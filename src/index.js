@@ -1,5 +1,6 @@
 const startBtnRef = document.querySelector('button[data-action=start]');
 const stopBtnRef = document.querySelector('button[data-action=stop]');
+stopBtnRef.disabled = true;
 let intervalId = null;
 let isActive = false;
 
@@ -29,10 +30,12 @@ function changeBackground() {
   }, 1000);
   isActive = true;
   startBtnRef.disabled = true;
+  stopBtnRef.disabled = false;
 }
 
 stopBtnRef.addEventListener('click', () => {
   clearInterval(intervalId);
   isActive = false;
   startBtnRef.disabled = false;
+  stopBtnRef.disabled = true;
 });
